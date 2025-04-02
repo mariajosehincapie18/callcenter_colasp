@@ -24,3 +24,7 @@ class Prioridad_mensajes():
             if palabra in mensaje:
                 prioridad += valor
         return prioridad
+    
+   
+
+            

@@ -23,7 +23,7 @@ class Procesadormensaje():
 
         for archivo in archivos:
             ruta_mensaje = os.path.join(self.ruta_mensaje, archivo)
-            with open(ruta_mensaje, "r", encoding="utf+8") as i:
+            with open(ruta_mensaje, "r", encoding="utf-8") as i:
                 mensaje = i.read().strip()
                 prioridad = self.prioridad.calcular_prioridad(mensaje)
                 resultados.append((archivo, prioridad))
