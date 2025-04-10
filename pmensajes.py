@@ -35,7 +35,6 @@ class Procesadormensaje():
         for archivo, prioridad in resultados:
             print(f"Archivo:{archivo},  prioridad:{prioridad}")
 
+        return resultados
 
-ruta_mesaje= r"C:\Users\USUARIO\Documents\semestre 3.2\estructura de datos\callcenter_colasp\mensajes"
-procesador= Procesadormensaje(ruta_mesaje)
-procesador.procesar_mensaje()
+

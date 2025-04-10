@@ -3,7 +3,7 @@ from pmensajes import Procesadormensaje
 
 class Agente ():
 
-    niveles_de_experiencia= {"experto": 0.5, "intermedio": 0.75, "basico": 1.0}
+    niveles_de_experiencia= {"experimentado": 0.5, "intermedio": 0.75, "basico": 1.0}
 
     def __init__(self, id:int, nivel_de_experiencia):
         self.id = id
@@ -15,7 +15,7 @@ class Agente ():
 
     def calcular_tiempo_estimado(self,mensaje: str):
         prioridad= Prioridad_mensajes()
-        longitud_mensaje = len(mensaje.split())
+        longitud_mensaje = len(mensaje)
         peso_palabras= prioridad.calcular_prioridad(mensaje)
 
 
@@ -25,15 +25,6 @@ class Agente ():
         return tiempo_por_experiencia
     
 
-consultas_experto = Agente(151, "experto")
-consultas_intermedio = Agente(151, "intermedio")
-consultas_basico = Agente(151, "basico")
-
-mensaje_prueba= ("hola buenas tardes necesito ayuda")
-
-print(consultas_experto.calcular_tiempo_estimado(mensaje_prueba ))
-print(consultas_intermedio.calcular_tiempo_estimado(mensaje_prueba ))
-print(consultas_basico.calcular_tiempo_estimado(mensaje_prueba ))
 
 
 

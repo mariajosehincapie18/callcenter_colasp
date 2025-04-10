@@ -3,7 +3,7 @@ class EmptyQueue(Exception):
 
 class PriorityQueue:
   def __init__(self, priority: str):
-    self.__queue: list[int] = []
+    self.__queue: list = []
     self.__priority: str = priority
 
   # agrega al final de la cola

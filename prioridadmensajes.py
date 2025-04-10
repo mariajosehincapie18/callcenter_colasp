@@ -15,14 +15,12 @@ class Prioridad_mensajes():
         "demora":4,
         "atencion":3}
     
-    def calcular_prioridad(self, mensaje):
-        prioridad= 0
-
-        mensaje= mensaje.lower()
-         
+    def calcular_prioridad(self, mensaje):   
+        prioridad= 0      
         for palabra,valor in self.palabras_claves.items():
             if palabra in mensaje:
                 prioridad += valor
+        print(prioridad)
         return prioridad
     
    
