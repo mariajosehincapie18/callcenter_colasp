@@ -26,14 +26,9 @@ class Procesadormensaje():
             with open(ruta_mensaje, "r", encoding="utf-8") as i:
                 mensaje = i.read().strip()
                 prioridad = self.prioridad.calcular_prioridad(mensaje)
-                resultados.append((archivo, prioridad))
+                resultados.append((archivo, prioridad, mensaje))
         
         resultados.sort(key=lambda x: x[1], reverse= True)
-
-
-        print("\n Mensaje ordenados:")
-        for archivo, prioridad in resultados:
-            print(f"Archivo:{archivo},  prioridad:{prioridad}")
 
         return resultados
 

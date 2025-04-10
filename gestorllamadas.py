@@ -2,17 +2,21 @@ from prioridadmensajes import Prioridad_mensajes
 from priority_cola import PriorityQueue, EmptyQueue
 from agente import Agente
 from pmensajes import Procesadormensaje
+import os
 
 class Gestorllamadas():
-    def __init__(self, agentes):
+    def __init__(self, agentes, ruta_mensaje):
         self.agentes = sorted(agentes, key= lambda a: a.valor_experiencia, reverse=True)
         self.cola_mensaje = PriorityQueue(priority="max")
+        self.ruta_mensaje = ruta_mensaje
+        self.procesador = Procesadormensaje(ruta_mensaje)
         
 
-    def recibir_mensaje(self, mensajes:list):
-        for mensaje in mensajes:
-            prioridad = Prioridad_mensajes().calcular_prioridad(mensaje)
+    def recibir_mensaje(self):
+        resultados = self.procesador.procesar_mensaje()
+        for _, prioridad, mensaje in resultados:
             self.cola_mensaje.enqueue( (prioridad, mensaje))
+    
         print(self.cola_mensaje)
 
     def asignar_llamadas(self):
