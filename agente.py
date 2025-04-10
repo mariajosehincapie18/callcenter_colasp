@@ -3,13 +3,13 @@ from pmensajes import Procesadormensaje
 
 class Agente ():
 
-    niveles_de_experiencia= {"Basico": 1.0, "intermedio": 0.75, "Experto":0.50}
+    niveles_de_experiencia= {"experto": 0.5, "intermedio": 0.75, "basico": 1.0}
 
-    def __init__(self, id:int, niveles_de_experiencia):
+    def __init__(self, id:int, nivel_de_experiencia):
         self.id = id
-        self.niveles_de_experiencia = niveles_de_experiencia.lower()
+        self.nivel_de_experiencia = nivel_de_experiencia.lower()
         self.estado = "disponible"
-        self.valor_experiencia =  Agente.niveles_de_experiencia.get(self.niveles_de_experiencia,1.0 )
+        self.valor_experiencia =  Agente.niveles_de_experiencia.get(self.nivel_de_experiencia, 1.0 )
         
         
 
@@ -25,9 +25,15 @@ class Agente ():
         return tiempo_por_experiencia
     
 
-consultas = Agente(111, "experto")
-mensaje_prueba= ("nesesito ayuda mi celular no funciona y necesito llamar a urgencias")
-print(consultas.calcular_tiempo_estimado(mensaje_prueba ))
+consultas_experto = Agente(151, "experto")
+consultas_intermedio = Agente(151, "intermedio")
+consultas_basico = Agente(151, "basico")
+
+mensaje_prueba= ("hola buenas tardes necesito ayuda")
+
+print(consultas_experto.calcular_tiempo_estimado(mensaje_prueba ))
+print(consultas_intermedio.calcular_tiempo_estimado(mensaje_prueba ))
+print(consultas_basico.calcular_tiempo_estimado(mensaje_prueba ))
 
 
 
