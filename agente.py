@@ -10,19 +10,24 @@ class Agente ():
         self.nivel_de_experiencia = nivel_de_experiencia.lower()
         self.estado = "disponible"
         self.valor_experiencia =  Agente.niveles_de_experiencia.get(self.nivel_de_experiencia, 1.0 )
+        self.prioridad = Prioridad_mensajes()
         
         
 
     def calcular_tiempo_estimado(self,mensaje: str):
-        prioridad= Prioridad_mensajes()
+    
         longitud_mensaje = len(mensaje)
-        peso_palabras= prioridad.calcular_prioridad(mensaje)
+        peso_palabras= self.prioridad.calcular_prioridad(mensaje)
 
 
         tiempo_estimado = (longitud_mensaje/ 10) + (peso_palabras / 2)
         tiempo_por_experiencia = tiempo_estimado * self.valor_experiencia
 
         return tiempo_por_experiencia
+
+   
+
+
     
 
 

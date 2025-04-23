@@ -10,12 +10,14 @@ class Gestorllamadas():
         self.cola_mensaje = PriorityQueue(priority="max")
         self.ruta_mensaje = ruta_mensaje
         self.procesador = Procesadormensaje(ruta_mensaje)
+        self.prioridades = []
         
 
     def recibir_mensaje(self):
         resultados = self.procesador.procesar_mensaje()
         for _, prioridad, mensaje in resultados:
             self.cola_mensaje.enqueue( (prioridad, mensaje))
+            self.prioridades.append(prioridad)
     
         print(self.cola_mensaje)
 
@@ -35,7 +37,31 @@ class Gestorllamadas():
                 break
     
     def obtener_agente_disponible(self):
-        for agente in self.agentes:
-            if agente.estado == "disponible":
-                return agente
+        for prioridad in self.prioridades:
+            if prioridad > 25:
+
+
+                for agente in self.agentes:
+                    if agente.estado == "disponible" and agente.nivel_de_experiencia == "experimentado":
+                        return agente
+                    
+                    elif agente.estado == "disponible" and agente.nivel_de_experiencia == "intermedio":
+                        return agente
+                    
+        
+                 
+                    
+            else:
+                for agente in self.agentes:
+                    agente.estado == "disponible"
+                    return agente
+                
         return None
+                        
+             
+
+
+
+     
+    
+    
