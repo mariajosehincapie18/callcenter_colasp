@@ -20,8 +20,10 @@ class Prioridad_mensajes():
         for palabra,valor in self.palabras_claves.items():
             if palabra in mensaje:
                 prioridad += valor
-        print(prioridad)
+    
         return prioridad
+    print(calcular_prioridad)
+    
     
    
 
