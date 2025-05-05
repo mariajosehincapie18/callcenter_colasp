@@ -21,4 +21,5 @@ mensaje = procesador.procesar_mensaje()
 
 gestor = Gestorllamadas(agentes, ruta_mesaje )
 gestor.recibir_mensaje()
+gestor.mensaje_mas_largo_y_mas_corto()
 gestor.asignar_llamadas()

@@ -23,6 +23,8 @@ class Prioridad_mensajes():
     
         return prioridad
     print(calcular_prioridad)
+
+        
     
     
    

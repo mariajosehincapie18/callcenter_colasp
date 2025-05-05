@@ -24,8 +24,27 @@ class Gestorllamadas():
     
         print(self.cola_mensaje)
 
+    def mensaje_mas_largo_y_mas_corto(self):
+        cola = self.cola_mensaje._PriorityQueue__queue
 
-   
+        if len(cola) == 0:
+            print("no hay mensaje")
+ 
+        grupos = {}
+        for prioridad, mensaje  in cola:
+            if prioridad in grupos:
+                grupos[prioridad].append(mensaje)
+            else:
+                grupos[prioridad]= [mensaje]
+        
+    
+        print("los grupos son:  " , grupos)            
+        
+
+
+
+
+
 
     
     def obtener_agente_disponible(self, prioridad_actual):
