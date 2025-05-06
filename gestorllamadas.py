@@ -21,8 +21,10 @@ class Gestorllamadas():
             for _, prioridad, mensaje in resultados:
                 self.cola_mensaje.enqueue( (prioridad, mensaje))
         
-    
-        print(self.cola_mensaje)
+
+        cola = self.cola_mensaje._PriorityQueue__queue
+        for i, mensaje in enumerate(cola, start=1):
+            print(f"{i}. {mensaje}")
 
     def mensaje_mas_largo_y_mas_corto(self):
         cola = self.cola_mensaje._PriorityQueue__queue
@@ -36,13 +38,36 @@ class Gestorllamadas():
                 grupos[prioridad].append(mensaje)
             else:
                 grupos[prioridad]= [mensaje]
-        
+
     
-        print("los grupos son:  " , grupos)            
+        orden_prioridad = sorted(grupos, key=lambda x: len(grupos[x]))
+        grupo_mas_pequeño = orden_prioridad[0]
+        mensaje = grupos[grupo_mas_pequeño]
+        if len(grupos[grupo_mas_pequeño]) > 1:
+            mensaje_mas_corto = min(mensaje, key= len)
+            mensaje_mas_largo = max(mensaje, key= len)
+        if len(grupos[grupo_mas_pequeño]) == 1:
+
+            segundo_grupo_pequeño = orden_prioridad[1]
+            mensaje1 = grupos[grupo_mas_pequeño][0]
+            mensaje2 = grupos[segundo_grupo_pequeño]
+
+            mensaje_mas_corto = min([mensaje1] + mensaje2, key=len)
+            mensaje_mas_largo = max([mensaje1] + mensaje2, key= len)
+
+    
+    
+        print("los grupos son:  ")   
+        for prioridad, mensaje in grupos.items():
+            print(f"prioridad  {prioridad}: ")
+            for mensaje in mensaje:
+                print(f"  -  {mensaje}")
+        print("ordenes de grupos", orden_prioridad)
+        print("grupo mas pequeño: ", grupo_mas_pequeño)
+        print("2do grupo mas pequeño: ", segundo_grupo_pequeño)
+        print("el mensaje mas corto es", mensaje_mas_corto)
+        print("el mensaje mas largo ", mensaje_mas_largo)
         
-
-
-
 
 
 
