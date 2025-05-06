@@ -16,9 +16,6 @@ agentes = [
 ]
 
 ruta_mesaje= r"C:\Users\USUARIO\Documents\semestre 3.2\estructura de datos\callcenter_colasp\mensajes"
-procesador= Procesadormensaje(ruta_mesaje)
-mensaje = procesador.procesar_mensaje()
-
 gestor = Gestorllamadas(agentes, ruta_mesaje )
 gestor.recibir_mensaje()
 gestor.mensaje_mas_largo_y_mas_corto()
